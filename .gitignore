@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.virtualenvs/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Checkpoints (large model files — all .pt recursively)
+checkpoints/**/*.pt
+
+# Logs
+logs/
+log.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+_tmp/
+
+# Agent knowledge cache
+.knowledge/

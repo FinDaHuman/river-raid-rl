@@ -1,0 +1,57 @@
+{
+  "history": [
+    {
+      "step": 50000,
+      "frames": 200000,
+      "episode": 299,
+      "mean_reward": 89.0,
+      "std_reward": 13.74772708486752,
+      "min_reward": 80.0,
+      "max_reward": 110.0,
+      "mean_length": 57.7,
+      "pct_theoretical_max": 0.0089,
+      "pct_human_expert": 0.6586250277510546,
+      "pct_rainbow_sota": 0.43047158403869407,
+      "elapsed_seconds": 483.13324427604675,
+      "timestamp": "2026-05-29T20:45:32.964248"
+    },
+    {
+      "step": 100000,
+      "frames": 400000,
+      "episode": 581,
+      "mean_reward": 588.0,
+      "std_reward": 464.5384806450376,
+      "min_reward": 90.0,
+      "max_reward": 1210.0,
+      "mean_length": 223.1,
+      "pct_theoretical_max": 0.0588,
+      "pct_human_expert": 4.351365351883372,
+      "pct_rainbow_sota": 2.8440145102781136,
+      "elapsed_seconds": 1158.5914549827576,
+      "timestamp": "2026-05-29T20:56:52.759483"
+    },
+    {
+      "step": 150000,
+      "frames": 600000,
+      "episode": 842,
+      "mean_reward": 426.0,
+      "std_reward": 546.7577159949368,
+      "min_reward": 30.0,
+      "max_reward": 1260.0,
+      "mean_length": 150.4,
+      "pct_theoretical_max": 0.0426,
+      "pct_human_expert": 3.1525197957522386,
+      "pct_rainbow_sota": 2.060459492140266,
+      "elapsed_seconds": 2044.009105205536,
+      "timestamp": "2026-05-29T21:11:36.590865"
+    }
+  ],
+  "best_mean_reward": 588.0,
+  "total_elapsed": 2048.238447189331,
+  "targets": {
+    "theoretical_max": 1000000,
+    "human_expert": 13513,
+    "rainbow_sota": 20675,
+    "dqn_benchmark": 8311
+  }
+}

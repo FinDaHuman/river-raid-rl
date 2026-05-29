@@ -1,0 +1,27 @@
+{
+  "history": [
+    {
+      "step": 5000,
+      "frames": 20000,
+      "episode": 28,
+      "mean_reward": 146.0,
+      "std_reward": 36.66060555964672,
+      "min_reward": 110.0,
+      "max_reward": 190.0,
+      "mean_length": 123.2,
+      "pct_theoretical_max": 0.0146,
+      "pct_human_expert": 1.0804410567601568,
+      "pct_rainbow_sota": 0.7061668681983071,
+      "elapsed_seconds": 43.07231688499451,
+      "timestamp": "2026-05-29T20:36:07.385455"
+    }
+  ],
+  "best_mean_reward": 146.0,
+  "total_elapsed": 45.8008918762207,
+  "targets": {
+    "theoretical_max": 1000000,
+    "human_expert": 13513,
+    "rainbow_sota": 20675,
+    "dqn_benchmark": 8311
+  }
+}
