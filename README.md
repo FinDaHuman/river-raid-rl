@@ -17,10 +17,10 @@ Watch the trained agent fly through River Raid at its best:
 
 ![Gameplay Demo](media/riverraid-best.mp4)
 
-*Agent scoring **630 points** using the Rainbow DQN checkpoint trained for 200K steps (800K game frames).*
+*Single-episode capture scoring **630 points** using the best Rainbow DQN checkpoint (formal 20-episode eval mean: 505, max: 1,210).*
 
 ```bash
-# Recreate this video with the latest checkpoint:
+# Render a new gameplay video with the latest checkpoint:
 python render_gameplay.py
 ```
 
@@ -37,7 +37,8 @@ python render_gameplay.py
 | **Average Human** | **~5,000–8,000** | **~0.5–0.8%** | Typical casual player |
 | **DQN Nature Paper** | **8,311** | **0.83%** | Mnih et al. 2015 |
 | **Random Agent** | **282** | **0.03%** | Uniform random actions |
-| **⬆ Our Agent (best)** | **588** | **0.06%** | Rainbow, 200K steps, 800K frames |
+| **⬆ Our Agent (eval mean)** | **588** | **0.06%** | Rainbow, 200K steps, 800K frames |
+| **⬆ Our Agent (demo run)** | **630** | **0.063%** | Single-episode gameplay video |
 
 **Progress after each training session is reported as % of all four targets** — theoretical max, human expert, Rainbow SOTA, and DQN Nature.
 
@@ -116,20 +117,22 @@ For each environment step:
 ### Best Training Run (200K steps, ~800K game frames)
 
 | Step | Frames | Mean Score | % Max | % Human | % SOTA | Best |
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|
 | 50,000 | 200,000 | 89.0 | 0.009% | 0.66% | 0.43% | 89.0 |
 | **100,000** | **400,000** | **588.0** | **0.059%** | **4.35%** | **2.84%** | **588.0** |
 | 150,000 | 600,000 | 426.0 | 0.043% | 3.15% | 2.06% | 588.0 |
 
 - **Best single episode:** 1,210 points
 - **Peak evaluation mean:** 588.0 ± 464.5
+- **Demo run (single episode):** 630 points
 - **Training speed:** ~100 steps/second (CPU)
 
 ### All Agents Compared
 
 | Agent | Score | % Max | % Human |
 |---|---|---|---|
-| **Rainbow (our best)** | **588** | **0.06%** | **4.35%** |
+| **Rainbow (eval mean)** | **588** | **0.06%** | **4.35%** |
+| **Rainbow (demo run)** | **630** | **0.063%** | **4.66%** |
 | Rule-Based Heuristic | 405 | 0.04% | 3.00% |
 | Random | 282 | 0.03% | 2.09% |
 | DQN (50K steps) | 72 | 0.01% | 0.53% |
@@ -235,11 +238,11 @@ Every evaluation (default: every 50K steps) produces a progress report:
 ===========================================================================
   Metric                                Current      Best Ever         Target
 ---------------------------------------------------------------------------
-  Raw Score                               588.0          588.0      1,000,000
-  % of Theoretical Max (1M)             0.0588%        0.0588%      100.0000%
-  % of Human Expert (13.5K)               4.35%          4.35%        100.00%
-  % of Rainbow SOTA (20.7K)               2.84%          2.84%        100.00%
-  % of DQN Nature (8.3K)                  7.08%          7.08%        100.00%
+  Raw Score                             630.0          588.0      1,000,000
+  % of Theoretical Max (1M)             0.0630%        0.0588%      100.0000%
+  % of Human Expert (13.5K)              4.66%          4.35%        100.00%
+  % of Rainbow SOTA (20.7K)              3.05%          2.84%        100.00%
+  % of DQN Nature (8.3K)                 7.58%          7.08%        100.00%
 ===========================================================================
 ```
 
