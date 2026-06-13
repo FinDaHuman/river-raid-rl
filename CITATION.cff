@@ -3,10 +3,9 @@ title: "River Raid RL — Rainbow DQN Agent for Atari 2600"
 message: "If you use this software in your research, please cite it as below."
 type: software
 authors:
-  - family-names: "Student"
-    given-names: "Your Name"
-    email: student@example.com
-    orcid: ""
+  - family-names: "Vance"
+    given-names: "Finn"
+    email: fptuk19hola@gmail.com
 repository-code: "https://github.com/anomalyco/river-raid-rl"
 abstract: "A deep reinforcement learning agent that plays River Raid (Atari 2600) using the Rainbow DQN algorithm. Built with PyTorch, Gymnasium, and the Arcade Learning Environment."
 keywords:
