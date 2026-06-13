@@ -69,7 +69,8 @@ riverraid-rl/
 ├─ ABLATION.md                  # ablation‑study blueprint
 ├─ CONTRIBUTING.md              # developer guidelines
 ├─ CITATION.cff                 # academic citation metadata
-├─ LICENSE / .gitignore
+├─ LICENSE / .gitignore / .gitattributes / .ruff.toml
+├─ requirements.txt             # pip dependencies (optional; pyproject.toml preferred)
 ├─ configs/                     # YAML experiment specifications
 │   ├─ rainbow.yaml             # full Rainbow DQN
 │   └─ dqn.yaml                 # vanilla DQN (template for ablations)
@@ -82,10 +83,16 @@ riverraid-rl/
 │   └─ utils/    (evaluation, logger, progress tracker)
 ├─ experiments/                 # unified entry points
 │   ├─ train.py                 # YAML‑driven trainer
-│   └─ evaluate.py              # checkpoint evaluation
+│   ├─ evaluate.py              # checkpoint evaluation
+│   ├─ train_cpu.py             # legacy CPU trainer
+│   ├─ train_human_level.py     # human‑level baseline trainer
+│   ├─ train_improved.py        # improved DQN variant
+│   ├─ train_optimized.py       # optimised DQN variant
+│   └─ train_riverraid.py       # original River Raid trainer
 ├─ scripts/                     # utility scripts (no training needed)
 │   ├─ report_existing.py       # summarise all existing checkpoints
-│   └─ instantiate_agents.py    # verify all agents can be built
+│   ├─ instantiate_agents.py    # verify all agents can be built
+│   └─ render_gameplay.py       # render agent gameplay video
 ├─ results/                     # analysis & visualisation
 │   ├── plot_training.py        # training curves from logged metrics
 │   └── ablation_table.py       # comparison table from progress.json
@@ -97,6 +104,9 @@ riverraid-rl/
 │   ├─ test_config.py
 │   └─ … (original test files)
 ├─ docs/                        # MkDocs documentation source
+│   ├─ index.md                 # MkDocs homepage
+│   ├─ PLAN_HUMAN_LEVEL.md      # human‑level training plan
+│   └─ RIVERRAID_RL_REPORT.md   # project report
 ├─ mkdocs.yml                   # documentation site config
 ├─ .github/workflows/tests.yml  # CI pipeline
 └─ media/                       # demo video
