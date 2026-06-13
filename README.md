@@ -28,21 +28,21 @@ The repository follows the **standard RL research workflow**:
 ## 🧪 Reinforcement Learning Foundations
 
 ### 1️⃣ Markov Decision Process (MDP)
-The environment is modeled as an MDP \((\mathcal{S},\mathcal{A},P,R,\gamma)\) where:
-- \(\mathcal{S}\) – set of stacked frames \(s_t \in \mathbb{R}^{4\times84\times84}\)
-- \(\mathcal{A}=\{0\dots5\}\) – discrete actions (NOOP, FIRE, UP, RIGHT, LEFT, DOWN)
-- \(P(s'\mid s,a)\) – transition dynamics defined by the Atari Learning Environment (ALE)
-- \(R(s,a)\) – raw game score, **sign‑clipped** to \(\{-1,0,+1\}\) (standard practice for Atari agents)
-- \(\gamma\) – discount factor (default \(0.99\))
+The environment is modeled as an MDP $(\mathcal{S},\mathcal{A},P,R,\gamma)$ where:
+* **$\mathcal{S}$** – set of stacked frames ($s_t \in \mathbb{R}^{4\times84\times84}$)
+* **$\mathcal{A}=\{0\dots5\}$** – discrete actions (NOOP, FIRE, UP, RIGHT, LEFT, DOWN)
+* **$P(s'\mid s,a)$** – transition dynamics defined by the Atari Learning Environment (ALE)
+* **$R(s,a)$** – raw game score, **sign‑clipped** to $\{-1,0,+1\}$ (standard practice for Atari agents)
+* **$\gamma$** – discount factor (default $0.99$)
 
 ### 2️⃣ Q‑learning Objective
-The goal is to learn an action‑value function \(Q_\theta(s,a)\) that satisfies the Bellman optimality equation:
+The goal is to learn an action‑value function $Q_\theta(s,a)$ that satisfies the Bellman optimality equation:
 
 $$
-Q_\theta(s,a) = \mathbb{E}_{s'\sim P}\Big[ R(s,a) + \gamma \max_{a'} Q_{\theta^-}(s',a') \Big]
+Q_\theta(s,a) = \mathbb{E}_{s'\sim P}\left[ R(s,a) + \gamma \max_{a'} Q_{\theta^-}(s',a') \right;]
 $$
 
-where \(\theta^-\) denotes the parameters of a **target network** that is periodically copied from the online network to stabilize learning.
+where $\theta^-$ denotes the parameters of a **target network** that is periodically copied from the online network to stabilize learning.
 
 ### 3️⃣ Rainbow Enhancements
 Rainbow synergistically combines six improvements:
