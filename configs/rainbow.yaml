@@ -1,0 +1,36 @@
+env:
+  env_id: "ALE/Riverraid-v5"
+  frame_stack: 4
+  frame_skip: 4
+  screen_size: 84
+  grayscale: true
+  max_episode_steps: 108000
+agent:
+  type: "rainbow"
+  params:
+    hidden_dim: 256
+    num_atoms: 51
+    v_min: -5.0
+    v_max: 50.0
+    n_step: 3
+    alpha: 0.6
+    beta_start: 0.4
+    beta_frames: 250000
+    buffer_capacity: 200000
+    min_replay_size: 5000
+    learning_rate: 0.00025
+    gamma: 0.99
+    epsilon_start: 1.0
+    epsilon_end: 0.01
+    epsilon_decay_steps: 250000
+    batch_size: 32
+    target_update_freq: 2500
+    train_freq: 4
+    max_grad_norm: 10.0
+training:
+  total_timesteps: 1000000
+  eval_freq: 50000
+  eval_episodes: 10
+  log_freq: 1000
+  save_freq: 250000
+  run_name: "rainbow_ablation"
