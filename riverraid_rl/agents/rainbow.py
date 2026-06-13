@@ -44,6 +44,7 @@ class RainbowAgent(BaseAgent):
 
         self.atoms = torch.linspace(rainbow_config.v_min, rainbow_config.v_max, rainbow_config.num_atoms).to(self.device)
         self.delta_z = (rainbow_config.v_max - rainbow_config.v_min) / (rainbow_config.num_atoms - 1)
+        self.n_step = rainbow_config.n_step
 
         self.steps = 0
         self.beta = rainbow_config.beta_start
@@ -64,18 +65,17 @@ class RainbowAgent(BaseAgent):
     ) -> torch.Tensor:
         batch_size = next_dist.size(0)
         atoms = self.atoms.unsqueeze(0).expand(batch_size, -1)
-        reward_support = rewards.unsqueeze(1).expand(-1, self.config.num_atoms)
-        done_support = dones.unsqueeze(1).expand(-1, self.config.num_atoms)
-
-        target_z = reward_support + (1 - done_support) * self.config.gamma * atoms
+        gamma_n = self.config.gamma ** self.n_step
+        target_z = rewards.unsqueeze(1) + (1.0 - dones.unsqueeze(1)) * gamma_n * atoms
         target_z = target_z.clamp(self.config.v_min, self.config.v_max)
 
         b = (target_z - self.config.v_min) / self.delta_z
         lower = b.floor().long().clamp(0, self.config.num_atoms - 1)
         upper = b.ceil().long().clamp(0, self.config.num_atoms - 1)
 
-        lower_weight = (1 - (b - lower.float())).clamp(0, 1)
-        upper_weight = (1 - (upper.float() - b)).clamp(0, 1)
+        same_atom = lower == upper
+        lower_weight = torch.where(same_atom, torch.ones_like(b), upper.float() - b).clamp(0, 1)
+        upper_weight = torch.where(same_atom, torch.zeros_like(b), b - lower.float()).clamp(0, 1)
 
         projected = torch.zeros(batch_size, self.config.num_atoms, device=next_dist.device)
         projected.scatter_add_(1, lower, next_dist * lower_weight)

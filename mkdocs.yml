@@ -1,0 +1,17 @@
+site_name: River Raid RL
+site_description: Academic Rainbow DQN Agent for Atari River Raid
+repo_url: https://github.com/anomalyco/river-raid-rl
+edit_uri: ""
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - toc.follow
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Agent Architecture: architecture.md
+  - Ablation Study: ablation.md
+  - API Reference: api.md

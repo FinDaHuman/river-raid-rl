@@ -133,3 +133,26 @@ class CategoricalDuelingDQN(nn.Module):
         val = self.value(val).view(-1, 1, self.num_atoms)
         logits = val + adv - adv.mean(dim=1, keepdim=True)
         return F.softmax(logits, dim=2)
+
+
+class CategoricalDuelingDQNAttention(CategoricalDuelingDQN):
+    def __init__(self, input_shape: tuple, num_actions: int, num_atoms: int = 51, hidden_dim: int = 512):
+        super().__init__(input_shape, num_actions, num_atoms, hidden_dim)
+        from riverraid_rl.models.attention import SpatialAttention, ChannelAttention
+        self.attn1 = SpatialAttention(32)
+        self.attn2 = ChannelAttention(64)
+
+    def forward(self, x):
+        x = x.float() / 255.0
+        x = F.relu(self.conv1(x))
+        x = self.attn1(x)
+        x = F.relu(self.conv2(x))
+        x = self.attn2(x)
+        x = F.relu(self.conv3(x))
+        x = x.view(x.size(0), -1)
+        adv = F.relu(self.fc_adv(x))
+        val = F.relu(self.fc_val(x))
+        adv = self.advantage(adv).view(-1, self.num_actions, self.num_atoms)
+        val = self.value(val).view(-1, 1, self.num_atoms)
+        logits = val + adv - adv.mean(dim=1, keepdim=True)
+        return F.softmax(logits, dim=2)

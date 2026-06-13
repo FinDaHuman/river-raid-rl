@@ -19,12 +19,14 @@ env/
 *.swp
 *.swo
 
-# Checkpoints (large model files — all .pt recursively)
-checkpoints/**/*.pt
+# Checkpoints (generated training artifacts — all content)
+checkpoints/
 
 # Logs
 logs/
 log.txt
+/train_*.log
+/training_*.log
 
 # OS
 .DS_Store

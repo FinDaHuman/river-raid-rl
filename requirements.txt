@@ -1,0 +1,10 @@
+torch>=2.0
+gymnasium[atari]
+ale-py>=0.8
+AutoROM.accept-rom-license
+numpy
+pyyaml
+matplotlib
+jupyter
+ruff
+pytest

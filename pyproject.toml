@@ -1,0 +1,32 @@
+[project]
+name = "riverraid-rl"
+version = "0.1.0"
+description = "Academic Reinforcement Learning project: Rainbow DQN for Atari River Raid"
+authors = [{name = "Student", email = "fptuk19hola@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[project.dependencies]
+python = ">=3.10"
+torch = "^2.0"
+gymnasium = {extras = ["atari"], version = "*"}
+ale-py = "*"
+numpy = "*"
+pyyaml = "*"
+
+[project.scripts]
+riverraid-train = "experiments.train:main"
+riverraid-eval = "experiments.evaluate:main"
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "matplotlib", "jupyter", "mkdocs", "mkdocs-material"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+lint.select = ["E", "F", "I", "N", "W", "UP"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
