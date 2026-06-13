@@ -39,7 +39,7 @@ The environment is modeled as an MDP $(\mathcal{S},\mathcal{A},P,R,\gamma)$ wher
 The goal is to learn an action‑value function $Q_\theta(s,a)$ that satisfies the Bellman optimality equation:
 
 $$
-Q_\theta(s,a) = \mathbb{E}_{s'\sim P}\left[ R(s,a) + \gamma \max_{a'} Q_{\theta^-}(s',a') \right;]
+Q_\theta(s,a) = \mathbb{E}_{s'\sim P}\left[ R(s,a) + \gamma \max_{a'} Q_{\theta^-}(s',a') \right]
 $$
 
 where $\theta^-$ denotes the parameters of a **target network** that is periodically copied from the online network to stabilize learning.
